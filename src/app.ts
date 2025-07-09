@@ -11,6 +11,6 @@ app.get("/", (req: Request, res: Response) => {
     message: "Welcome to Toure Management System Backend",
   });
 });
-app.use(globalError);
+// app.use(globalError);
 
 export default app;
