@@ -2,18 +2,15 @@
 import { Server } from "http";
 import mongoose from "mongoose";
 import app from "./app";
+import { envVars } from "./app/config/env";
 
 let server: Server;
 const startServer = async () => {
   try {
-    await mongoose.connect(
-      `mongodb+srv://saumittra_DB:Saumittra12@tsoftelectronics.l4wjuvt.mongodb.net/tour_DB?retryWrites=true&w=majority&appName=TSoftElectronics`
-    );
-
+    await mongoose.connect(envVars.MONGO_DB);
     console.log("Connected to DB!!");
-
-    server = app.listen(5000, () => {
-      console.log(`Server is listening to port 5000`);
+    server = app.listen(envVars.PORT, () => {
+      console.log(`Server is listening to port ${envVars.PORT}`);
     });
   } catch (error) {
     console.log(error);
