@@ -2,19 +2,21 @@ import dotnet from "dotenv";
 
 dotnet.config();
 
-interface EnvConfig {
+interface envConfigs {
   PORT: string;
   MONGO_DB: string;
   NODE_ENV: "development" | "production";
 }
 
-const loadEnvVariables = (): EnvConfig => {
+const loadEnvVariables = (): envConfigs => {
   const requiredEnvVariables: string[] = ["PORT", "MONGO_DB", "NODE_ENV"];
+
   requiredEnvVariables.forEach((key) => {
     if (!process.env[key]) {
-      throw new Error(`Missing require enviroment variable ${key}`);
+      throw new Error(`Missing required environment variable ${key}`);
     }
   });
+
   return {
     PORT: process.env.PORT as string,
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
