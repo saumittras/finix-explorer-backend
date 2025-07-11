@@ -1,5 +1,6 @@
 import cors from "cors";
 import express, { Request, Response } from "express";
+import { globalErrorHandler } from "./app/middlewares/globalErrorHandler";
 import { router } from "./app/routes";
 
 const app = express();
@@ -13,5 +14,7 @@ app.get("/", (req: Request, res: Response) => {
     message: "Welcome to Finix Elplore Backend",
   });
 });
+
+app.use(globalErrorHandler);
 
 export default app;
