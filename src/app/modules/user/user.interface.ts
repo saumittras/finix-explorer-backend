@@ -1,4 +1,4 @@
-import { Types } from "mongoose";
+import { ObjectId, Types } from "mongoose";
 
 export enum Role {
   SUPER_ADMIN = "SUPER_ADMIN",
@@ -20,10 +20,11 @@ export interface IAuthProvider {
 
 export enum IsActive {
   ACTIVE = "ACTIVE",
-  INACtIVE = "INACTIVE",
+  INACTIVE = "INACTIVE",
   BLOCKED = "BLOCKED",
 }
 export interface IUser {
+  _id?: ObjectId;
   name: string;
   email: string;
   password?: string;
