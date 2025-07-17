@@ -117,6 +117,7 @@ const googleCallbackController = catchAsync(
 
     // /booking => booking , => "/" => ""
     const user = req.user;
+    console.log(user, "From Call Back google");
 
     if (!user) {
       throw new AppError(httpStatus.NOT_FOUND, "User Not Found");
